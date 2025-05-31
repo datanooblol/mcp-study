@@ -67,12 +67,55 @@ def create_todo_list(todos:Todos):
         - dict : a dictionary of created todos
     """
     return {"resonse": todos.todos}
+
+@app.post("add", operation_id="add", response_model=dict[str, Any])
+def add(a: int, b: int) -> Dict[str, Any]:
+    """Add two numbers
+    
+    Args:
+        a (int): first number
+        b (int): second number
+        
+    Returns:
+        dict: a dictionary with the sum
+    """
+    return {"sum": a + b}
+
+@app.post("subtract", operation_id="subtract", response_model=dict[str, Any])
+def subtract(a: int, b: int) -> Dict[str, Any]:
+    """Subtract two numbers
+    
+    Args:
+        a (int): first number
+        b (int): second number
+        
+    Returns:
+        dict: a dictionary with the difference
+    """
+    return {"difference": a - b}
+
+@app.post("multiply", operation_id="multiply", response_model=dict[str, Any])
+def multiply(a: int, b: int) -> Dict[str, Any]:
+    """Multiply two numbers
+    
+    Args:
+        a (int): first number
+        b (int): second number
+        
+    Returns:
+        dict: a dictionary with the product
+    """
+    return {"product": a * b}
+
 mcp = FastApiMCP(
     app,  
         include_operations=[
-            "home",
-            "expose_secret",
-            "create_todo_list"
+            # "home",
+            # "expose_secret",
+            # "create_todo_list",
+            "add",
+            "subtract",
+            "multiply",
         ],
     name="My API MCP",  # Name for your MCP server
     description="MCP server for my API",  # Description
