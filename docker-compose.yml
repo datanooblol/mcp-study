@@ -1,6 +1,7 @@
 services:
   db:
-    image: postgres
+    # image: postgres
+    image: ankane/pgvector
     container_name: postgres_server
     environment:
       POSTGRES_DB: mydb
